@@ -3,35 +3,27 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping http://dozermapper.github.io/schema/bean-mapping.xsd">
   <mapping>
-    <class-a>com.acme.order.commons.dto.OrderDto</class-a>
-    <class-b>com.acme.order.model.OrderDO</class-b>
+    <class-a>com.acme.order.commons.dto.CustomerDto</class-a>
+    <class-b>com.acme.order.model.CustomerDO</class-b>
     <field>
       <a>id</a>
       <b>id</b>
     </field>
     <field>
-      <a>order</a>
-      <b>order</b>
+      <a>firstName</a>
+      <b>firstName</b>
     </field>
     <field>
-      <a>subtotal</a>
-      <b>subtotal</b>
+      <a>lastName</a>
+      <b>lastName</b>
     </field>
     <field>
-      <a>tax</a>
-      <b>tax</b>
+      <a>secondLastName</a>
+      <b>secondLastName</b>
     </field>
     <field>
-      <a>total</a>
-      <b>total</b>
-    </field>
-    <field>
-      <a date-format="yyyy-MM-dd'T'HH:mm:ss.SSS">order</a>
-      <b>order</b>
-    </field>
-    <field>
-      <a>customer</a>
-      <b>customer</b>
+      <a>rfc</a>
+      <b>rfc</b>
     </field>
   </mapping>
 </mappings>

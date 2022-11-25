@@ -26,7 +26,7 @@ public class OrderDto implements Serializable
   
   private CustomerDto customer;
   
-  private Date order;
+  private String order;
   
   private BigDecimal subtotal;
   

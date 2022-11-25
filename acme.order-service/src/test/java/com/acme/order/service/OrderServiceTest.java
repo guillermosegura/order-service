@@ -1,7 +1,10 @@
 package com.acme.order.service;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -16,6 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.acme.order.commons.request.ItemRequestDto;
 import com.acme.order.commons.request.OrderRequestDto;
+import com.google.gson.GsonBuilder;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Class OrderServiceTest
@@ -24,6 +30,7 @@ import com.acme.order.commons.request.OrderRequestDto;
  */
 @SpringBootTest(webEnvironment = WebEnvironment.NONE)
 @Transactional
+@Slf4j
 class OrderServiceTest
 {
   private static final Logger LOG = LoggerFactory.getLogger( OrderServiceTest.class );
@@ -56,7 +63,21 @@ class OrderServiceTest
     
     var result = this.orderService.create( order  );
     
-    assertNotNull( result );
+    var gson = new GsonBuilder().setPrettyPrinting().create();
+    log.info( gson.toJson( result ) );
+    
+    assertAll( "Not empty", 
+      () -> assertNotNull( result ), 
+      () -> assertNotNull( result.getBody() ),
+      () -> assertNotNull( result.getBody().getCustomer() )
+      );
+
+    assertEquals( 1, result.getBody().getCustomer().getId() );
+    assertAll( "Amounts",
+      () -> assertEquals( new BigDecimal( "20.00" ), result.getBody().getSubtotal() ),
+      () -> assertEquals( new BigDecimal( "3.2000" ), result.getBody().getTax() ),
+      () -> assertEquals( new BigDecimal( "23.2000" ), result.getBody().getTotal() )
+    );
     
   }
 }

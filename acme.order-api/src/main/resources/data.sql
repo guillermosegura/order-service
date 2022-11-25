@@ -1,21 +1,56 @@
-insert  into TBL_order(cd_id,nb_city,nb_phone,nb_addressLine1,nb_addressLine2,nb_state,nb_country,nb_postalCode,nb_territory) values 
-(1,'San Francisco','+1 650 219 4782','100 Market Street','Suite 300','CA','USA','94080','NA');
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (1, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
 
-insert  into TBL_order(cd_id,nb_city,nb_phone,nb_addressLine1,nb_addressLine2,nb_state,nb_country,nb_postalCode,nb_territory) values 
-(2,'Boston','+1 215 837 0825','1550 Court Place','Suite 102','MA','USA','02107','NA');
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (2, 'Alma', 'Ruiz', 'Lopez', 'RULA');
 
-insert  into TBL_order(cd_id,nb_city,nb_phone,nb_addressLine1,nb_addressLine2,nb_state,nb_country,nb_postalCode,nb_territory) values 
-(3,'NYC','+1 212 555 3000','523 East 53rd Street','apt. 5A','NY','USA','10022','NA');
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (3, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
 
-insert  into TBL_order(cd_id,nb_city,nb_phone,nb_addressLine1,nb_addressLine2,nb_state,nb_country,nb_postalCode,nb_territory) values 
-(4,'Paris','+33 14 723 4404','43 Rue Jouffroy D''abbans',NULL,NULL,'France','75017','EMEA');
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (4, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
 
-insert  into TBL_order(cd_id,nb_city,nb_phone,nb_addressLine1,nb_addressLine2,nb_state,nb_country,nb_postalCode,nb_territory) values 
-(5,'Tokyo','+81 33 224 5000','4-1 Kioicho',NULL,'Chiyoda-Ku','Japan','102-8578','Japan');
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (5, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
 
-insert  into TBL_order(cd_id,nb_city,nb_phone,nb_addressLine1,nb_addressLine2,nb_state,nb_country,nb_postalCode,nb_territory) values 
-(6,'Sydney','+61 2 9264 2451','5-11 Wentworth Avenue','Floor #2',NULL,'Australia','NSW 2010','APAC');
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (6, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
 
-insert  into TBL_order(cd_id,nb_city,nb_phone,nb_addressLine1,nb_addressLine2,nb_state,nb_country,nb_postalCode,nb_territory) values 
-(7,'London','+44 20 7877 2041','25 Old Broad Street','Level 7',NULL,'UK','EC2N 1HN','EMEA');
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (7, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
 
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (8, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
+
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (9, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
+
+INSERT INTO TC_Customer
+(cd_id, nb_firstname, nb_lastname, nb_secondlastname, nb_rfc)
+VALUES (10, 'Juan', 'Perez', 'Lopez', 'PELJ900510AB1');
+
+
+INSERT INTO TC_ITEM
+(cd_id, nb_sku, tx_description, im_price)
+VALUES (1, 'A0001', 'Articulo 1', 10.0); 
+
+INSERT INTO TC_ITEM
+(cd_id, nb_sku, tx_description, im_price)
+VALUES (2, 'A0002', 'Articulo 2', 10.0); 
+
+INSERT INTO TC_ITEM
+(cd_id, nb_sku, tx_description, im_price)
+VALUES (3, 'A0003', 'Articulo 3', 10.0); 
+
+INSERT INTO TC_ITEM
+(cd_id, nb_sku, tx_description, im_price)
+VALUES (4, 'A0004', 'Articulo 4', 10.0); 

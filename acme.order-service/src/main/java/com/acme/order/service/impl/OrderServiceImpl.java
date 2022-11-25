@@ -1,6 +1,8 @@
 package com.acme.order.service.impl;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -15,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.acme.order.commons.dto.CustomerDto;
 import com.acme.order.commons.dto.OrderDto;
 import com.acme.order.commons.enums.ErrorCode;
 import com.acme.order.commons.exception.BusinessException;
@@ -85,7 +88,7 @@ public class OrderServiceImpl implements OrderService
     log.debug( "%s", request );
 
     int page = request.getOffset() / request.getLimit();
-    Pageable pageRequest = PageRequest.of( page, request.getLimit(), Sort.by( "country", "city" ) );
+    Pageable pageRequest = PageRequest.of( page, request.getLimit(), Sort.by( "id" ).descending() );
 
     var paged = this.orderPersistence.findAll( pageRequest );
 
@@ -164,6 +167,19 @@ public class OrderServiceImpl implements OrderService
     this.orderPersistence.save( entity );
 
     var response = new OrderDto();
+    response.setId( entity.getId() );
+    response.setCustomer( new CustomerDto() );
+    response.getCustomer().setId( entity.getCustomer().getId() );
+    response.getCustomer().setFirstName( entity.getCustomer().getFirstName() );
+    response.getCustomer().setLastName( entity.getCustomer().getLastName() );
+    response.getCustomer().setSecondLastName( entity.getCustomer().getSecondLastName() );
+    response.getCustomer().setRfc( entity.getCustomer().getRfc() );
+    response.setSubtotal( entity.getSubtotal() );
+    response.setTax( entity.getTax() );
+    response.setTotal( entity.getTotal() );
+    
+    DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+    response.setOrder( df.format( entity.getOrder() ) );
 
     return new GenericResponseDto<>( response );
   }
