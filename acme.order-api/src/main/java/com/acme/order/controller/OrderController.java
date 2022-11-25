@@ -22,8 +22,10 @@ import com.acme.order.commons.request.PaginatedRequestDto;
 import com.acme.order.commons.response.GenericResponseDto;
 import com.acme.order.commons.response.PaginatedResponseDto;
 import com.acme.order.facade.OrderFacade;
+import com.acme.order.persistence.redis.StringRedisRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
@@ -43,8 +45,8 @@ public class OrderController
   @Autowired
   private OrderFacade orderFacade;
 
-//  @Autowired
-//  private StringRedisRepository redis;
+  @Autowired
+  private StringRedisRepository redis;
 
   /***
    * Method to get Order
@@ -82,21 +84,21 @@ public class OrderController
 
     Gson gson = new GsonBuilder().create();
     GenericResponseDto<OrderDto> result = null;
-//    if( redis.hasKey( key ) )
-//    {
-//      var json = this.redis.get( key );
-//
-//      result = gson.fromJson( json, new TypeToken<GenericResponseDto<OrderDto>>()
-//      {
-//      }.getType() );
-//    }
-//    else
-//    {
+    if( redis.hasKey( key ) )
+    {
+      var json = this.redis.get( key );
+
+      result = gson.fromJson( json, new TypeToken<GenericResponseDto<OrderDto>>()
+      {
+      }.getType() );
+    }
+    else
+    {
       result = this.orderFacade.find( orderId );
 
-//      String json = gson.toJson( result );
-//      this.redis.add( key, json );
-//    }
+      String json = gson.toJson( result );
+      this.redis.add( key, json );
+    }
 
     HttpStatus status = HttpStatus.OK;
     if( result == null )

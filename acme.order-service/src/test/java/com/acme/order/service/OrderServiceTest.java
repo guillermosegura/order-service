@@ -36,8 +36,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 class OrderServiceTest
 {
-  private static final Logger LOG = LoggerFactory.getLogger( OrderServiceTest.class );
-
   @Autowired
   private OrderService orderService;
 
@@ -70,11 +68,14 @@ class OrderServiceTest
     var gson = new GsonBuilder().setPrettyPrinting().create();
     log.info( gson.toJson( result ) );
 
-    assertAll( "Not empty", () -> assertNotNull( result ), () -> assertNotNull( result.getBody() ),
+    assertAll( "Not empty", 
+      () -> assertNotNull( result ), 
+      () -> assertNotNull( result.getBody() ),
       () -> assertNotNull( result.getBody().getCustomer() ) );
 
     assertEquals( 1, result.getBody().getCustomer().getId() );
-    assertAll( "Amounts", () -> assertEquals( new BigDecimal( "20.00" ), result.getBody().getSubtotal() ),
+    assertAll( "Amounts", 
+      () -> assertEquals( new BigDecimal( "20.00" ), result.getBody().getSubtotal() ),
       () -> assertEquals( new BigDecimal( "3.2000" ), result.getBody().getTax() ),
       () -> assertEquals( new BigDecimal( "23.2000" ), result.getBody().getTotal() ) );
 

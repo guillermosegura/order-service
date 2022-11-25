@@ -10,10 +10,6 @@
       <b>id</b>
     </field>
     <field>
-      <a>order</a>
-      <b>order</b>
-    </field>
-    <field>
       <a>subtotal</a>
       <b>subtotal</b>
     </field>
