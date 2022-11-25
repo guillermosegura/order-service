@@ -1,0 +1,31 @@
+type Query {
+	orders(
+		query : OrderQuery
+		page : Int
+		size : Int
+	) : [Order]
+}
+
+input OrderQuery {
+	id: Int
+	city: String
+	phone: String
+	addressLine1: String
+	addressLine2: String
+	state: String
+	country: String
+	postalCode: String
+	territory: String
+}
+
+type Order {
+	id: Int
+	city: String
+	phone: String
+	addressLine1: String
+	addressLine2: String
+	state: String
+	country: String
+	postalCode: String
+	territory: String
+}
