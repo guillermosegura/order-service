@@ -1,8 +1,8 @@
 application:
   redis:
-    hostname: 192.168.0.12
+    hostname: localhost
     port: 6379
-    ttl: 10
+    ttl: 30
     
 spring:
   config:
